@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Convert excel file to csv using custom delimiter</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--  bootstrap css and js-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  </head>
+  <body>
+   <div class="container text-center">
+      <h1 class="text-center">Convert excel file to csv using custom delimiter</h1>
+      <div class="row">
+         <div class="col-md-offset-3 col-md-6 col-md-offset-3">
+   
+    <form  id="excetocsvform" action="/file" enctype="multipart/form-data" method="post">
+      <input  type="file" id="file-to-upload" name="file-to-upload">
+      <br>
+    Choose a delimiter :
+      <select class="form-control" name='delimiter'>
+         <option value=",">,</option>
+         <option value="|">|</option>
+         <option value="#">#</option>
+           <option value="*">*</option>
+      </select><br>
+      <button id="val_submit" class="btn btn-primary form-control"  type="button">Concert to csv</button> 
+        <button id="val_submit_hid" class=" btn btn-primaryform-control" style="visibility: hidden;" type="submit" >Concert to csv</button> 
+    </form> 
+</div>
+</div>
+</body>
+    <script type="text/javascript">
+       $(document).ready(function(){
+         $("#val_submit").click(function(){
+          
+            if($("#file-to-upload").val().length>0)
+            {
+               var val = $("#file-to-upload").val().toLowerCase(),
+            regex = new RegExp("(.*?)\.(xlsx|xls)$");
+
+        if (!(regex.test(val))) {
+            $(this).val('');
+             alert("you can only upload excel file ");
+        }
+               else {
+
+                   $("#val_submit_hid").click();
+               }
+            }
+else {
+
+   alert("please select a file to upload");
+}
+
+
+         })
+             })
+    </script> 
+  </body>
+</html>
